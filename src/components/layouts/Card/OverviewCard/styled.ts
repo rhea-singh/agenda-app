@@ -11,6 +11,8 @@ export const StyledCard = styled.div<CardProps>`
   padding: 24px 24px 20px 24px;
   position: relative;
   background-color: ${({ theme }) => theme.colors.background.light_grey};
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap;
 
   .icon {
     display: none;
@@ -35,7 +37,14 @@ export const StyledCard = styled.div<CardProps>`
     left: 24px;
     position: absolute;
   }
-  @media ${({ theme }) => theme.media.desktop} {
+
+  @media ${({ theme }) => theme.media.tablet} {
+    width: "572px";
+    padding: 0px 16px;
+  }
+  @media ${({ theme }) => theme.media.mobile} {
+    width: "358px";
+    padding: 0px 16px;
   }
 `;
 

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const OverviewContainer = styled.div`
-  width: 1, 440px;
+  width: 1,440px;
   height: fit-content;
-  max-height: 3, 426.25px;
+  max-height: 3,426.25px;
   padding: 112px 64px 200px 64px;
   height: fit-content;
   display: flex;
@@ -12,66 +12,72 @@ export const OverviewContainer = styled.div`
   transition: all 0.5s ease;
   background: ${({ theme }) => theme.colors.background.default};
 
-  @media ${({ theme }) => theme.media.desktop} {
-    /* grid-row: 1 / 2;
-    grid-column: 2 / 3; */
+  @media ${({ theme }) => theme.media.desktop_l} {
+    width: 1,920px;
+    max-height: 2,720px;
+    padding: 144px 0px 288px 0px;
+    gap: 144px;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 1, 280px;
+    max-height: 3,426.25px;
+    padding: 112px 0px 200px 0px;
+    gap: 72px;
+  }
+  @media ${({ theme }) => theme.media.mobile} {
+    width: 599px;
+    max-height: 2,934px;
+    padding: 72px 0px 144px 0px;
+    gap: 48px;
   }
 `;
 
 export const AgendaSection = styled.div`
   width: 100%;
   height: fit-content;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
 
-  @media ${({ theme }) => theme.media.desktop} {
+  @media ${({ theme }) => theme.media.desktop_l} {
+    gap: 24px;
   }
-`;
-
-export const GreetingsSection = styled.section`
-  width: 100%;
-  overflow: hidden;
-  height: fit-content;
-
-  > ul {
-    gap: 14px;
-    width: 100%;
-    display: flex;
-    margin: 20px 0 0;
-    list-style: none;
-
-    > li {
-      flex: 1;
-      flex-shrink: 0;
-    }
+  @media ${({ theme }) => theme.media.tablet} {
+    gap: 24px;
   }
-
-  @media ${({ theme }) => theme.media.desktop} {
-    max-width: 100%;
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-    padding: 0 0 0 32px;
-
-    > ul {
-      gap: 18px;
-    }
+  @media ${({ theme }) => theme.media.mobile} {
+    gap: 24px;
   }
 `;
 
 export const AgendaHeader = styled.div`
   width: 1, 248px;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
   justify-items: center;
   align-items: end;
   gap: 24px;
   height: fit-content;
   max-height: 95px;
+  display: grid;
+
+  @media ${({ theme }) => theme.media.desktop_l} {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    grid-template-columns: 1fr;
+  }
+  @media ${({ theme }) => theme.media.mobile} {
+    grid-template-columns: 1fr;
+  }
 
   > .timezone-div {
     width: 219px;
     height: 46px;
     font-size: ${({ theme }) => theme.typography.size.font16};
+    @media ${({ theme }) => theme.media.tablet} {
+      display: none;
+    }
+    @media ${({ theme }) => theme.media.mobile} {
+      display: none;
+    }
   }
 `;

@@ -16,14 +16,29 @@ export const HeaderContainer = styled.header`
     white-space: nowrap;
     text-overflow: ellipsis;
     color: ${({ theme }) => theme.colors.typography.dark};
+  }
+
+  @media ${({ theme }) => theme.media.desktop} {
     font-size: ${({ theme }) => theme.typography.size.font80};
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    font-size: ${({ theme }) => theme.typography.size.font80};
+  }
+  @media ${({ theme }) => theme.media.mobile} {
+    font-size: ${({ theme }) => theme.typography.size.font40};
   }
 
   > .subtitle-text {
     color: ${({ theme }) => theme.colors.typography.dark};
-    font-size: ${({ theme }) => theme.typography.size.font20};
     font-weight: ${({ theme }) => theme.typography.weight.regular};
-  }
-  @media ${({ theme }) => theme.media.desktop} {
+    @media ${({ theme }) => theme.media.desktop} {
+      font-size: ${({ theme }) => theme.typography.size.font20};
+    }
+    @media ${({ theme }) => theme.media.tablet} {
+      font-size: ${({ theme }) => theme.typography.size.font20};
+    }
+    @media ${({ theme }) => theme.media.mobile} {
+      font-size: ${({ theme }) => theme.typography.size.font16};
+    }
   }
 `;
