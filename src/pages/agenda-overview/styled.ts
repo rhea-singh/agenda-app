@@ -1,29 +1,31 @@
 import styled from "styled-components";
 
 export const OverviewContainer = styled.div`
-  gap: 28px;
-  width: 100%;
-  display: flex;
+  width: 1, 440px;
   height: fit-content;
+  max-height: 3, 426.25px;
+  padding: 112px 64px 200px 64px;
+  height: fit-content;
+  display: flex;
   flex-direction: column;
-  padding: calc(68px + 28px) 16px;
+  gap: 112px;
+  transition: all 0.5s ease;
+  background: ${({ theme }) => theme.colors.background.default};
 
-  > .other-sections {
-    gap: 28px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  @media ${({ theme }) => theme.media.desktop} {
+    /* grid-row: 1 / 2;
+    grid-column: 2 / 3; */
   }
-  
-  @media ${({ theme }) => theme.media.desktop}  {
-    width: 100%;
-    display: grid;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-    padding: 24px 32px 0px 0;
-    grid-template-rows: max-content 2fr;
-    grid-template-columns: minmax(auto, 2fr) minmax(308px, 1fr);
+`;
+
+export const AgendaSection = styled.div`
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+
+  @media ${({ theme }) => theme.media.desktop} {
   }
 `;
 
@@ -57,24 +59,19 @@ export const GreetingsSection = styled.section`
   }
 `;
 
-export const SectionHeader = styled.header`
-  width: 100%;
-  display: flex;
-  max-height: 100%;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const AgendaSection = styled.div`
-  gap: 14px;
-  width: 100%;
+export const AgendaHeader = styled.div`
+  width: 1, 248px;
   display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-items: end;
+  gap: 24px;
   height: fit-content;
-  flex-direction: column;
-  transition: all .5s ease;
+  max-height: 95px;
 
-  @media ${({ theme }) => theme.media.desktop} {
-    /* grid-row: 1 / 2;
-    grid-column: 2 / 3; */
+  > .timezone-div {
+    width: 219px;
+    height: 46px;
+    font-size: ${({ theme }) => theme.typography.size.font16};
   }
 `;

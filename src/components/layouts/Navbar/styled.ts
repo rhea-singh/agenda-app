@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.div`
-  width: 488px;
-  height: fit-content;
-  max-height: 215px;
+  width: 184px;
+  height: 56px;
   position: sticky;
+  margin-bottom: 16px;
 
   @media ${({ theme }) => theme.media.desktop} {
     width: 203px;

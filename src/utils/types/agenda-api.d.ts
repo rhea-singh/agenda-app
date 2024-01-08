@@ -37,6 +37,9 @@ type BlockAttrsType = {
 
 type InnerBlocksType = {
   attrs: BlockAttrsType;
+  innerBlocks: {
+    innerHTML: string;
+  }[];
 };
 
 export type AgendaListType = {

@@ -1,15 +1,23 @@
-import { AgendaSection, OverviewContainer } from "./styled";
+import { AgendaSection, OverviewContainer, AgendaHeader } from "./styled";
 import { Header } from "../../components/layouts/Header";
-import { Card } from "../../components/layouts/Card";
-import useFetch from "../../utils/hooks/useFetch";
+import { OverviewCard } from "../../components/layouts/Card/OverviewCard";
+import useFetch, { defaultInnerBlockValue } from "../../utils/hooks/useFetch";
 import { DayOptions, GET_SPEAKERS } from "../../utils/constants";
 import { formatDate } from "../../utils/functions/formatDate";
 import { Skeleton } from "../../components/skeleton/Skeleton";
 import { Navbar } from "../../components/layouts/Navbar";
 import { useState } from "react";
+import Modal from "../../components/modal/Modal";
+import useModal from "../../utils/hooks/useModal";
+import { CardDetails } from "../../components/layouts/Card/DetailCard";
+import { InnerBlocksType } from "../../utils/types/agenda-api";
 
 export const AgendaOverview = () => {
   const [daySelected, setDaySelected] = useState(DayOptions.Day_1);
+  const [selectedCard, setSelectedCard] = useState<InnerBlocksType>(
+    defaultInnerBlockValue
+  );
+  const { isOpen, toggle } = useModal();
 
   const { data, loading, error } = useFetch({
     url: GET_SPEAKERS,
@@ -17,37 +25,46 @@ export const AgendaOverview = () => {
     variables: { post_id: 41298 },
   });
 
-  const handleDaySelected = (selectedDay: DayOptions) => {
-    setDaySelected(selectedDay);
+  const onCardClick = (agenda?: InnerBlocksType) => {
+    agenda && setSelectedCard(agenda);
+    toggle();
   };
+
   return (
     <OverviewContainer>
-      <Header
-        title={data?.attrs?.heading || ""}
-        subtitle={data?.attrs?.intro || ""}
-      />
-      <Navbar setDaySelected={handleDaySelected} />
+      <AgendaHeader aria-labelledby="agenda-header">
+        {data?.attrs && (
+          <Header title={data.attrs.heading} subtitle={data.attrs.intro} />
+        )}
+        <Navbar setDaySelected={(selectedDay)=> setDaySelected(selectedDay)} />
+        <div className="timezone-div">Timezone: Europe/Amsterdam</div>
+      </AgendaHeader>
+      {loading && <Skeleton height="186px" />}
       <AgendaSection aria-labelledby="agenda-overview">
-        {loading && <Skeleton height="186px" />}
         {data?.innerBlocks &&
-          data.innerBlocks.map((item, blockIndex) => {
-            const { speakerList, startTime, title, category, day } = item.attrs;
+          data.innerBlocks.map((item, cardIndex) => {
+            const { startTime, day } = item.attrs;
             const scheduledTime = formatDate(startTime);
-
+            console.log('day.toUpperCase === daySelected.toUpperCase ---> ', day, daySelected)
             // Filter speakerList based on daySelected before rendering Card
-            if (day.toUpperCase === daySelected.toUpperCase) {
+            if (day === daySelected) {
               return (
-                <Card
-                  key={blockIndex}
-                  speakerList={speakerList}
-                  cardTitle={title}
+                <OverviewCard
+                  key={cardIndex}
+                  agendaItem={item.attrs}
                   time={scheduledTime}
-                  category={category}
+                  onClick={() => onCardClick(item)}
                 />
               );
             }
           })}
       </AgendaSection>
+      <Modal isOpen={isOpen} toggle={toggle}>
+        <CardDetails
+          selectedCardAttrs={selectedCard}
+          onClick={() => onCardClick()}
+        />
+      </Modal>
     </OverviewContainer>
   );
 };

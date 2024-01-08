@@ -8,44 +8,48 @@ interface fetchAPIProps {
   variables?: Record<string, any>;
 }
 
+export const defaultInnerBlockValue = {
+  attrs: {
+    category: "",
+    day: "",
+    duration: 0,
+    startTime: "",
+    title: "",
+    speakerList: [
+      {
+        name: "",
+        position: "",
+        id: 0,
+        image: {
+          alt: "",
+          srcset: "",
+          id: 0,
+          url: "",
+        },
+        company_logo: [
+          {
+            alt: "",
+            srcset: "",
+            mediaId: 0,
+            mediaUrl: "",
+          },
+        ],
+        title: "",
+      },
+    ],
+  },
+  innerBlocks: [
+    {
+      innerHTML: "",
+    },
+  ],
+};
 const defaultValue = {
   attrs: {
     heading: "",
     intro: "",
   },
-  innerBlocks: [
-    {
-      attrs: {
-        category: "",
-        day: "",
-        duration: 0,
-        startTime: "",
-        title: "",
-        speakerList: [
-          {
-            name: "",
-            position: "",
-            id: 0,
-            image: {
-              alt: "",
-              srcset: "",
-              id: 0,
-              url: "",
-            },
-            company_logo: [
-              {
-                alt: "",
-                srcset: "",
-                mediaId: 0,
-                mediaUrl: "",
-              },
-            ],
-            title: "",
-          },
-        ],
-      },
-    },
-  ],
+  innerBlocks: [defaultInnerBlockValue],
 };
 
 const useFetch = ({ url, variables }: fetchAPIProps) => {
@@ -60,13 +64,13 @@ const useFetch = ({ url, variables }: fetchAPIProps) => {
       .post(url, variables)
       .then((res: any) => {
         setLoading(false);
-        res.data?.blocks && setData(res.data.blocks[0]);
+        res.data?.data.blocks && setData(res.data.data.blocks[0]);
       })
       .catch((err: any) => {
         setLoading(false);
         setError("An error occurred. Awkward..");
       });
-  }, []);
+  }, [url]);
 
   return { data, loading, error };
 };

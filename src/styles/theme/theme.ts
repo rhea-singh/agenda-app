@@ -4,6 +4,7 @@ export const theme: ThemeTypes = {
   theme: "light",
   colors: {
     background: {
+      default: "#E5E5E5",
       light: "#DBDAD8",
       light_grey: "#DADADA",
       grey: "#CACACA",
@@ -11,6 +12,7 @@ export const theme: ThemeTypes = {
       highlighted: "#D7FE51",
     },
     typography: {
+      default: "#000000",
       light: "#FFFFFF",
       dark: "#000000",
       highlighted: "#D7FE51",

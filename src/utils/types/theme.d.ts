@@ -30,6 +30,7 @@ export interface ThemeTypes {
 }
 
 interface ColorShades {
+  default: string;
   light: string;
   light_grey?: string;
   grey?: string;
