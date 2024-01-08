@@ -51,22 +51,27 @@ export const AgendaSection = styled.div`
 `;
 
 export const AgendaHeader = styled.div`
-  width: 1, 248px;
+  width: 1,248px;
   justify-items: center;
   align-items: end;
   gap: 24px;
   height: fit-content;
   max-height: 95px;
   display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 
   @media ${({ theme }) => theme.media.desktop_l} {
     grid-template-columns: 1fr 2fr 1fr;
   }
   @media ${({ theme }) => theme.media.tablet} {
+    max-height: 215px;
     grid-template-columns: 1fr;
+    justify-items: flex-start;
   }
   @media ${({ theme }) => theme.media.mobile} {
+    max-height: 215px;
     grid-template-columns: 1fr;
+    justify-items: flex-start;
   }
 
   > .timezone-div {

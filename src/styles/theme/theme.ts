@@ -39,9 +39,9 @@ export const theme: ThemeTypes = {
     },
   },
   media: {
-    mobile: "(max-width: 599px)",
-    tablet: "(max-width: 1279px)",
-    desktop: "(max-width: 1919px)",
+    mobile: "(min-width: 320px) and (max-width: 599px)",
+    tablet: "(min-width: 600px) and (max-width: 1279px)",
+    desktop: "(min-width: 1280px) and (max-width: 1919px)",
     desktop_l: "(min-width: 1920px)",
   },
 };

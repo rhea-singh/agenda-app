@@ -3,8 +3,10 @@ import {
   SpeakersType,
 } from "../../../../utils/types/agenda-api";
 import { PictureCard } from "./PictureCard";
+import { HighlightedCard } from "./HighlightedCard";
 import arrowIcon from "../../../../assets/icons/arrow.svg";
-import { ActionType } from "../../../../utils/constants";
+import greenArrowIcon from "../../../../assets/icons/arrow_highlight.svg";
+
 import {
   CardTitle,
   CardTopContainer,
@@ -16,10 +18,10 @@ import {
 } from "./styled";
 
 interface CardHeaderProps {
-  title: string;
+  title?: string;
   time: string;
-  category: string;
-  actionType: ActionType.Close | ActionType.Info | ActionType.Overview;
+  category?: string;
+  isHighlighted?: boolean;
 }
 
 interface PhotoContentProps {
@@ -37,20 +39,24 @@ export const CardHeader = ({
   title,
   time,
   category,
-  actionType,
+  isHighlighted = false,
 }: CardHeaderProps) => {
   return (
     <CardTopContainer>
       <CardTopContentLeft>
         <CardTopContentRight>
           <TimeBadge>{time}</TimeBadge>
-          <div>{category}</div>
+          {category && <div>{category}</div>}
         </CardTopContentRight>
         <Icon>
-          <img className="icon" src={arrowIcon} alt="Arrow Icon" />
+          <img
+            className="icon"
+            src={isHighlighted ? greenArrowIcon : arrowIcon}
+            alt="Arrow Icon"
+          />
         </Icon>
       </CardTopContentLeft>
-      <CardTitle>{title}</CardTitle>
+      {title && <CardTitle>{title}</CardTitle>}
     </CardTopContainer>
   );
 };
@@ -79,16 +85,17 @@ export const OverviewCard = ({
   time,
   onClick,
 }: OverviewCardProps) => {
-  const { speakerList, startTime, title, category } = agendaItem;
-  return (
+  const { speakerList, title, category } = agendaItem;
+  return speakerList.length > 1 ? (
     <StyledCard onClick={onClick} size={speakerList?.length <= 2 ? "md" : "lg"}>
-      <CardHeader
-        title={title}
-        time={time}
-        category={category}
-        actionType={ActionType.Overview}
-      />
+      <CardHeader title={title} time={time} category={category} />
       <PhotoContent speakerList={speakerList} overviewMode={true} />
     </StyledCard>
+  ) : (
+    <HighlightedCard
+      speaker={agendaItem.speakerList[0]}
+      time={time}
+      onClick={onClick}
+    />
   );
 };

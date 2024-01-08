@@ -36,7 +36,7 @@ export const AgendaOverview = () => {
         {data?.attrs && (
           <Header title={data.attrs.heading} subtitle={data.attrs.intro} />
         )}
-        <Navbar setDaySelected={(selectedDay)=> setDaySelected(selectedDay)} />
+        <Navbar setDaySelected={(selectedDay) => setDaySelected(selectedDay)} />
         <div className="timezone-div">Timezone: Europe/Amsterdam</div>
       </AgendaHeader>
       {loading && <Skeleton height="186px" />}
@@ -45,7 +45,7 @@ export const AgendaOverview = () => {
           data.innerBlocks.map((item, cardIndex) => {
             const { startTime, day } = item.attrs;
             const scheduledTime = formatDate(startTime);
-            console.log('day.toUpperCase === daySelected.toUpperCase ---> ', day, daySelected)
+
             // Filter speakerList based on daySelected before rendering Card
             if (day === daySelected) {
               return (

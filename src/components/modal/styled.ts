@@ -7,7 +7,7 @@ const baseStyle = css`
     height: 100vh;
     position: absolute;
     top: 0;
-    background: #232323;
+    opacity: 0.4;
     display: flex;
     justify-content: center;
     align-items: center;

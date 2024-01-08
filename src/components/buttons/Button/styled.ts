@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const baseStyle = css`
   gap: 10px;
+  width: fit-content;
   height: 40px;
   display: flex;
   padding: 0 8px;
@@ -22,6 +23,16 @@ const baseStyle = css`
   &:focus {
     background: ${({ theme }) => theme.colors.background.dark};
     color: ${({ theme }) => theme.colors.background.light};
+  }
+  @media ${({ theme }) => theme.media.desktop_l} {
+    max-width: 93px;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    max-width: 83px;
+  }
+  @media ${({ theme }) => theme.media.mobile} {
+    max-width: 83px;
   }
 `;
 

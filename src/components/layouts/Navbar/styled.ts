@@ -6,20 +6,23 @@ export const NavContainer = styled.div`
   position: sticky;
   margin-bottom: 16px;
 
-  @media ${({ theme }) => theme.media.desktop} {
-    width: 203px;
+  @media ${({ theme }) => theme.media.desktop_l} {
+    max-width: 203px;
     height: 68px;
     padding: 8px;
     position: static;
   }
 
   @media ${({ theme }) => theme.media.tablet} {
-    width: 184px;
+    max-width: 184px;
     height: 56px;
   }
   @media ${({ theme }) => theme.media.mobile} {
-    width: 168px;
-    height: 40px;
+    width: fit-content;
+    height: fit-content;
+    min-height: 40px;
+    position: fixed;
+    z-index: 100;
   }
 `;
 

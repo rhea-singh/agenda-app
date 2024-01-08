@@ -13,6 +13,7 @@ export const StyledCard = styled.div<CardProps>`
   background-color: ${({ theme }) => theme.colors.background.light_grey};
   overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap;
+  animation: slide 3000ms ease-in-out;
 
   .icon {
     display: none;
@@ -40,11 +41,22 @@ export const StyledCard = styled.div<CardProps>`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: "572px";
-    padding: 0px 16px;
+    padding: 16px;
   }
   @media ${({ theme }) => theme.media.mobile} {
     width: "358px";
-    padding: 0px 16px;
+    padding: 16px;
+  }
+  @keyframes slide {
+    0% {
+      background-position: 100% 0;
+    }
+    50% {
+      background-position: 50% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
   }
 `;
 
@@ -104,11 +116,13 @@ export const CardTopContentRight = styled.div`
   gap: 16px;
   justify-content: space-between;
 `;
+
 export const CardTitle = styled.div`
   color: ${({ theme }) => theme.colors.typography.dark};
   font-size: ${({ theme }) => theme.typography.size.font24};
   font-weight: ${({ theme }) => theme.typography.weight.regular};
   max-lines: 6;
+  white-space: pre-wrap;
 `;
 
 export const Icon = styled.div`
