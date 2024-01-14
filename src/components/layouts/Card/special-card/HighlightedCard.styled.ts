@@ -17,22 +17,26 @@ export const HighlightCard = styled.div<HighlightProps>`
   flex-direction: column;
   justify-content: space-between;
   animation: slide 3000ms ease-in-out;
-
   .icon {
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-
-  .card-title {
+  .hover-description {
+    font-size: ${({ theme }) => theme.typography.size.font32};
+    color: ${({ theme }) => theme.colors.typography.dark};
+    display: none;
+  }
+  .card-description {
+    font-size: ${({ theme }) => theme.typography.size.font24};
+    color: ${({ theme }) => theme.colors.typography.highlighted};
     display: none;
   }
 
   &:hover {
     background: ${({ theme }) => theme.colors.background.highlighted};
-    .card-title {
+    .hover-description {
       display: block;
-      font-size: ${({ theme }) => theme.typography.size.font32};
     }
     .speaker-name {
       display: none;
@@ -41,17 +45,6 @@ export const HighlightCard = styled.div<HighlightProps>`
       display: block;
       opacity: 1;
     }
-  }
-
-  @media ${({ theme }) => theme.media.tablet} {
-    min-width: 572px;
-    width: min-content;
-    padding: 16px;
-  }
-  @media ${({ theme }) => theme.media.mobile} {
-    background-size: contain;
-    width: "358px";
-    padding: 16px;
   }
   @keyframes slide {
     0% {
@@ -63,6 +56,33 @@ export const HighlightCard = styled.div<HighlightProps>`
     100% {
       background-position: 0 0;
     }
+  }
+
+  @media ${({ theme }) => theme.media.mobile} {
+    min-width: 288px;
+    width: 90vw;
+    height: 524px;
+    padding: 24px, 24px, 20px, 24px;
+    overflow-x: auto;
+    background-size: contain;
+    .card-description {
+      display: block;
+    }
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    max-width: 571px;
+    width: 100%;
+    height: 474px;
+    padding: 24px, 24px, 20px, 24px;
+    overflow-x: auto;
+    .card-description {
+      display: block;
+    }
+  }
+  @media ${({ theme }) => theme.media.desktop_l} {
+    width: 414px;
+    height: 488px;
+    padding: 24px, 24px, 20px, 24px;
   }
 `;
 

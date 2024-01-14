@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const OverviewContainer = styled.div`
-  width: 1,440px;
+  width: 1, 440px;
   height: fit-content;
-  max-height: 3,426.25px;
+  max-height: 3, 426.25px;
   padding: 112px 64px 200px 64px;
   height: fit-content;
   display: flex;
@@ -13,20 +13,20 @@ export const OverviewContainer = styled.div`
   background: ${({ theme }) => theme.colors.background.default};
 
   @media ${({ theme }) => theme.media.desktop_l} {
-    width: 1,920px;
-    max-height: 2,720px;
-    padding: 144px 0px 288px 0px;
+    width: 1, 920px;
+    max-height: 2, 720px;
+    padding: 144px 56px 288px 56px;
     gap: 144px;
   }
   @media ${({ theme }) => theme.media.tablet} {
     width: 1, 280px;
-    max-height: 3,426.25px;
-    padding: 112px 0px 200px 0px;
+    max-height: 3, 426.25px;
+    padding: 112px, 56px, 200px, 56px;
     gap: 72px;
   }
   @media ${({ theme }) => theme.media.mobile} {
     width: 599px;
-    max-height: 2,934px;
+    max-height: 2, 934px;
     padding: 72px 0px 144px 0px;
     gap: 48px;
   }
@@ -43,17 +43,17 @@ export const AgendaSection = styled.div`
     gap: 24px;
   }
   @media ${({ theme }) => theme.media.tablet} {
-    flex-direction: column;
     gap: 24px;
   }
   @media ${({ theme }) => theme.media.mobile} {
     flex-direction: column;
     gap: 24px;
+    padding: 0px 16px 0px 16px;
   }
 `;
 
 export const AgendaHeader = styled.div`
-  width: 1,248px;
+  width: 1, 248px;
   justify-items: center;
   align-items: end;
   gap: 24px;

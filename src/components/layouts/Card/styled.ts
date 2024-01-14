@@ -14,18 +14,15 @@ export const StyledCard = styled.div<CardProps>`
   overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap;
   animation: slide 3000ms ease-in-out;
-
   .icon {
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-
   &:hover .icon {
     display: block;
     opacity: 1;
   }
-
   > .photo-container {
     width: fit-content;
     max-width: 668px;
@@ -38,19 +35,19 @@ export const StyledCard = styled.div<CardProps>`
     left: 24px;
     position: absolute;
   }
+
   @media ${({ theme }) => theme.media.mobile} {
-    min-width: 488px;
-    width: min-content;
+    min-width: 288px;
+    width: 90vw;
     height: 524px;
     padding: 24px, 24px, 20px, 24px;
     overflow-x: auto;
   }
   @media ${({ theme }) => theme.media.tablet} {
-    min-width: 571px;
-    width: min-content;
+    max-width: 571px;
+    width: fit-content;
     height: 474px;
     padding: 24px, 24px, 20px, 24px;
-    overflow-x: auto;
   }
   @media ${({ theme }) => theme.media.desktop_l} {
     width: 414px;
@@ -78,13 +75,11 @@ export const ImgContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-
   > .speaker-img {
     width: 124px;
     height: 148px;
     padding-bottom: 16px;
   }
-
   > .company-logo {
     width: 69.99px;
     height: 54px;

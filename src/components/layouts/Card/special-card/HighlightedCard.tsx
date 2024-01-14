@@ -24,9 +24,10 @@ export const HighlightedCard = ({
       <CardHeader time={time} isHighlighted={true}/>
       <CardContent>
         <div className="speaker-name">{name}</div>
-        <div className="card-title">{title}</div>
+        <div className="hover-description">{title}</div>
         <CardFooter>
           <div className="speaker-position">{position}</div>
+          <div className="card-description">{title}</div>
           <img className="company-logo" src={company_logo[0]?.mediaUrl} />
         </CardFooter>
       </CardContent>
