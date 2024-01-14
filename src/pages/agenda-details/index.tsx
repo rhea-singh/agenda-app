@@ -2,6 +2,7 @@ import { formatDate } from "../../utils/functions/formatDate";
 import { InnerBlocksType } from "../../utils/types/agenda-api";
 import { Button } from "../../components/ui/buttons/Button";
 import { PhotoContent } from "../../components/layouts/Card/index";
+import { AddToCalendarButton } from "add-to-calendar-button-react";
 import {
   CardDetailsContainer,
   CardHeader,
@@ -56,7 +57,12 @@ export const AgendaDetails = ({
         <DynamicHTMLComponent
           htmlString={selectedCardAttrs.innerBlocks[0].innerHTML}
         />
-        <a type="link">ADD TO CALENDAR +</a>
+        <AddToCalendarButton
+          name="Agenda-event"
+          startDate="2024-01-15"
+          options={["Apple", "Google"]}
+          timeZone="Europe/Amsterdam"
+        />
         <PhotoGallery>
           <div>SPEAKERS</div>
           <PhotoContent speakerList={speakerList} overviewMode={false} />
