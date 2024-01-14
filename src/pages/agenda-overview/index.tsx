@@ -1,15 +1,15 @@
 import { AgendaSection, OverviewContainer, AgendaHeader } from "./styled";
 import { Header } from "../../components/layouts/Header";
-import { OverviewCard } from "../../components/layouts/Card/OverviewCard";
+import { OverviewCard } from "../../components/layouts/Card";
 import useFetch, { defaultInnerBlockValue } from "../../utils/hooks/useFetch";
 import { DayOptions, GET_SPEAKERS } from "../../utils/constants";
 import { formatDate } from "../../utils/functions/formatDate";
-import { Skeleton } from "../../components/skeleton/Skeleton";
+import { Skeleton } from "../../components/ui/skeleton/Skeleton";
 import { Navbar } from "../../components/layouts/Navbar";
 import { useState } from "react";
-import Modal from "../../components/modal/Modal";
+import Modal from "../../components/ui/modal/Modal";
 import useModal from "../../utils/hooks/useModal";
-import { CardDetails } from "../../components/layouts/Card/DetailCard";
+import { AgendaDetails } from "../agenda-details";
 import { InnerBlocksType } from "../../utils/types/agenda-api";
 
 export const AgendaOverview = () => {
@@ -60,7 +60,7 @@ export const AgendaOverview = () => {
           })}
       </AgendaSection>
       <Modal isOpen={isOpen} toggle={toggle}>
-        <CardDetails
+        <AgendaDetails
           selectedCardAttrs={selectedCard}
           onClick={() => onCardClick()}
         />

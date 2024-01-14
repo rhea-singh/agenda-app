@@ -1,9 +1,11 @@
 import { ButtonHTMLAttributes, MouseEventHandler, useState } from "react";
+import { StringLocale } from "yup/lib/locale";
 import { ButtonContainer, LinkButtonContainer } from "./styled";
 
 type ButtonProps = {
   type?: "submit" | "button" | "reset";
   name?: string;
+  color?: string;
   customClass?: string;
   ariaLabel?: string;
   children: JSX.Element;
@@ -17,6 +19,7 @@ type ButtonProps = {
 export const Button = ({
   as,
   type = "button",
+  color,
   children,
   name,
   customClass,
@@ -36,6 +39,7 @@ export const Button = ({
     <Element
       as={as}
       name={name}
+      color={color}
       type={type}
       onClick={(event: any) => handleClick(event)}
       className={customClass}

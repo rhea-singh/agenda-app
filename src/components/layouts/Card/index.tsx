@@ -1,11 +1,7 @@
-import {
-  BlockAttrsType,
-  SpeakersType,
-} from "../../../../utils/types/agenda-api";
-import { PictureCard } from "./PictureCard";
-import { HighlightedCard } from "./HighlightedCard";
-import arrowIcon from "../../../../assets/icons/arrow.svg";
-import greenArrowIcon from "../../../../assets/icons/arrow_highlight.svg";
+import { BlockAttrsType, SpeakersType } from "../../../utils/types/agenda-api";
+import { HighlightedCard } from "./special-card/HighlightedCard";
+import arrowIcon from "../../../assets/icons/arrow.svg";
+import greenArrowIcon from "../../../assets/icons/arrow_highlight.svg";
 
 import {
   CardTitle,
@@ -13,6 +9,7 @@ import {
   CardTopContentLeft,
   CardTopContentRight,
   Icon,
+  ImgContainer,
   StyledCard,
   TimeBadge,
 } from "./styled";
@@ -68,12 +65,26 @@ export const PhotoContent = ({
   return (
     <div className="photo-container">
       {speakerList.map((speaker) => {
+        const { name, position, company_logo, image, title } = speaker;
         return (
-          <PictureCard
-            key={speaker.id}
-            speakerDetails={speaker}
-            isInOverviewMode={overviewMode}
-          />
+          <ImgContainer>
+            <img
+              className="speaker-img"
+              srcSet={image.srcset}
+              sizes="(max-width: 600px) 480px,
+         800px"
+              src={image.url}
+              alt={image.alt}
+            />
+            {overviewMode ? (
+              <img className="company-logo" src={company_logo[0]?.mediaUrl} />
+            ) : (
+              <div>
+                <div>{name.toUpperCase()}</div>
+                <div>{position}</div>
+              </div>
+            )}
+          </ImgContainer>
         );
       })}
     </div>

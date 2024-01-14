@@ -1,5 +1,5 @@
 import { SpeakersType } from "../../../../utils/types/agenda-api";
-import { CardHeader } from "./index";
+import { CardHeader } from "../index";
 
 import {
   CardContent,

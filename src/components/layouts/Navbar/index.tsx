@@ -1,5 +1,5 @@
 import { NavContainer, NavContent } from "./styled";
-import { Button } from "../../buttons/Button";
+import { Button } from "../../ui/buttons/Button";
 import { DayOptions } from "../../../utils/constants";
 import { useState } from "react";
 

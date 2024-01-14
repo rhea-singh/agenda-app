@@ -38,14 +38,24 @@ export const StyledCard = styled.div<CardProps>`
     left: 24px;
     position: absolute;
   }
-
-  @media ${({ theme }) => theme.media.tablet} {
-    width: "572px";
-    padding: 16px;
-  }
   @media ${({ theme }) => theme.media.mobile} {
-    width: "358px";
-    padding: 16px;
+    min-width: 488px;
+    width: min-content;
+    height: 524px;
+    padding: 24px, 24px, 20px, 24px;
+    overflow-x: auto;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    min-width: 571px;
+    width: min-content;
+    height: 474px;
+    padding: 24px, 24px, 20px, 24px;
+    overflow-x: auto;
+  }
+  @media ${({ theme }) => theme.media.desktop_l} {
+    width: 414px;
+    height: 488px;
+    padding: 24px, 24px, 20px, 24px;
   }
   @keyframes slide {
     0% {
@@ -72,6 +82,7 @@ export const ImgContainer = styled.div`
   > .speaker-img {
     width: 124px;
     height: 148px;
+    padding-bottom: 16px;
   }
 
   > .company-logo {
@@ -111,6 +122,7 @@ export const CardTopContentLeft = styled.div`
 export const CardTopContentRight = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   height: fit-content;
   max-height: 29px;
   gap: 16px;

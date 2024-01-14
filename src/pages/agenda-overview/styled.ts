@@ -43,9 +43,11 @@ export const AgendaSection = styled.div`
     gap: 24px;
   }
   @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
     gap: 24px;
   }
   @media ${({ theme }) => theme.media.mobile} {
+    flex-direction: column;
     gap: 24px;
   }
 `;

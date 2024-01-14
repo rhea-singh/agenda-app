@@ -6,7 +6,7 @@ interface HighlightProps {
 }
 
 export const HighlightCard = styled.div<HighlightProps>`
-  width: 400px;
+  width: auto;
   height: 464px;
   gap: 24px;
   padding: 24px 24px 20px 24px;
@@ -14,9 +14,8 @@ export const HighlightCard = styled.div<HighlightProps>`
   background-image: image-set(${(props) => props.srcset});
   background-size: cover;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   animation: slide 3000ms ease-in-out;
 
   .icon {
@@ -45,10 +44,12 @@ export const HighlightCard = styled.div<HighlightProps>`
   }
 
   @media ${({ theme }) => theme.media.tablet} {
-    width: "572px";
+    min-width: 572px;
+    width: min-content;
     padding: 16px;
   }
   @media ${({ theme }) => theme.media.mobile} {
+    background-size: contain;
     width: "358px";
     padding: 16px;
   }
@@ -80,40 +81,31 @@ export const CardContent = styled.div`
     font-size: ${({ theme }) => theme.typography.size.font64};
     color: ${({ theme }) => theme.colors.typography.highlighted};
   }
-
-  @media ${({ theme }) => theme.media.desktop_l} {
-    width: "414px";
-    height: "488px";
-    padding: 24px;
-  }
-  @media ${({ theme }) => theme.media.tablet} {
-    width: "572px";
-    height: "525px";
-    padding: 24px;
-  }
-  @media ${({ theme }) => theme.media.mobile} {
-    width: "390px";
-    height: "487px";
-    padding: 24px;
-
-    > .speaker-name {
-      font-size: ${({ theme }) => theme.typography.size.font48};
-    }
-  }
 `;
 
 export const CardFooter = styled.div`
   display: flex;
+  width: 352px;
+  height: 54px;
   align-content: space-between;
   align-items: center;
   flex-direction: row;
   gap: 16px;
   padding: 0px 16px;
   background-color: ${({ theme }) => theme.colors.background.highlighted};
-
   > .company-logo {
     width: 69.99px;
     height: 54px;
     padding: 10.4px 0px;
+  }
+
+  @media ${({ theme }) => theme.media.desktop_l} {
+    width: 366px;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 524px;
+  }
+  @media ${({ theme }) => theme.media.mobile} {
+    width: 342px;
   }
 `;
